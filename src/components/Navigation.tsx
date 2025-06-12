@@ -3,21 +3,23 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, BookOpen, MessageCircle, Star, Volume2, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
   const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
   const [fontSize, setFontSize] = useState('text-base');
-  const [language, setLanguage] = useState('English');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', icon: Home, path: '/' },
-    { name: 'Tutorials', icon: BookOpen, path: '/tutorials' },
-    { name: 'AI Chat', icon: MessageCircle, path: '/chat' },
-    { name: 'Feedback', icon: Star, path: '/feedback' },
+    { name: t('nav.home'), icon: Home, path: '/' },
+    { name: t('nav.tutorials'), icon: BookOpen, path: '/tutorials' },
+    { name: t('nav.chat'), icon: MessageCircle, path: '/chat' },
+    { name: t('nav.feedback'), icon: Star, path: '/feedback' },
   ];
 
-  const languages = ['English', 'Hindi', 'Tamil', 'Telugu'];
+  const languages = ['English', 'Hindi', 'Tamil', 'Telugu'] as const;
   const fontSizes = [
     { label: 'Small', value: 'text-sm' },
     { label: 'Medium', value: 'text-base' },
@@ -82,29 +84,31 @@ const Navigation = () => {
               <Volume2 className="w-4 h-4" />
             </Button>
 
-            <select
-              value={fontSize}
-              onChange={(e) => setFontSize(e.target.value)}
-              className="bg-card border border-muted text-xs sm:text-sm rounded px-2 py-1"
-            >
-              {fontSizes.map((size) => (
-                <option key={size.value} value={size.value}>
-                  {size.label}
-                </option>
-              ))}
-            </select>
+            <Select value={fontSize} onValueChange={setFontSize}>
+              <SelectTrigger className="w-24 text-xs sm:text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {fontSizes.map((size) => (
+                  <SelectItem key={size.value} value={size.value}>
+                    {size.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="bg-card border border-muted text-xs sm:text-sm rounded px-2 py-1"
-            >
-              {languages.map((lang) => (
-                <option key={lang} value={lang}>
-                  {lang}
-                </option>
-              ))}
-            </select>
+            <Select value={language} onValueChange={(value) => setLanguage(value as typeof language)}>
+              <SelectTrigger className="w-20 text-xs sm:text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {languages.map((lang) => (
+                  <SelectItem key={lang} value={lang}>
+                    {lang}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Mobile Menu Button */}
@@ -159,32 +163,34 @@ const Navigation = () => {
 
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Font Size:</span>
-                <select
-                  value={fontSize}
-                  onChange={(e) => setFontSize(e.target.value)}
-                  className="bg-card border border-muted text-sm rounded px-2 py-1"
-                >
-                  {fontSizes.map((size) => (
-                    <option key={size.value} value={size.value}>
-                      {size.label}
-                    </option>
-                  ))}
-                </select>
+                <Select value={fontSize} onValueChange={setFontSize}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {fontSizes.map((size) => (
+                      <SelectItem key={size.value} value={size.value}>
+                        {size.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Language:</span>
-                <select
-                  value={language}
-                  onChange={(e) => setLanguage(e.target.value)}
-                  className="bg-card border border-muted text-sm rounded px-2 py-1"
-                >
-                  {languages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
+                <Select value={language} onValueChange={(value) => setLanguage(value as typeof language)}>
+                  <SelectTrigger className="w-32">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {languages.map((lang) => (
+                      <SelectItem key={lang} value={lang}>
+                        {lang}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           </div>
