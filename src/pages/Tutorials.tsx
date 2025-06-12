@@ -18,7 +18,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-green/30',
       duration: '15 min',
       difficulty: 'Beginner',
-      videoId: 'dQw4w9WgXcQ', // Placeholder video ID
+      videoId: 'fjVlDYu6erU',
       topics: ['Send Messages', 'Share Photos', 'Video Calls', 'Voice Messages']
     },
     {
@@ -30,7 +30,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-blue/30',
       duration: '20 min',
       difficulty: 'Beginner',
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'NsjKR6YOup4',
       topics: ['Setup Account', 'Add Money', 'Pay Bills', 'QR Code Payments']
     },
     {
@@ -42,7 +42,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-orange/30',
       duration: '12 min',
       difficulty: 'Beginner',
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'XQUaQpoF8xE',
       topics: ['Search Places', 'Get Directions', 'Save Locations', 'Share Location']
     },
     {
@@ -54,7 +54,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-purple/30',
       duration: '10 min',
       difficulty: 'Beginner',
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'W8ZW5MTOrHM',
       topics: ['WhatsApp Video', 'Google Meet', 'Screen Sharing', 'Group Calls']
     },
     {
@@ -66,7 +66,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-pink/30',
       duration: '18 min',
       difficulty: 'Intermediate',
-      videoId: 'dQw4w9WgXcQ',
+      videoId: '7YauTt8rnTE',
       topics: ['Take Photos', 'Edit Images', 'Create Albums', 'Share Memories']
     },
     {
@@ -78,7 +78,7 @@ const Tutorials = () => {
       borderColor: 'border-neon-yellow/30',
       duration: '25 min',
       difficulty: 'Intermediate',
-      videoId: 'dQw4w9WgXcQ',
+      videoId: 'jd9Led_e1ZQ',
       topics: ['Setup Gmail', 'Compose Email', 'Attachments', 'Organize Inbox']
     }
   ];
@@ -106,48 +106,50 @@ const Tutorials = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4">
-      <div className="container mx-auto">
+    <div className="min-h-screen py-8 px-4 sm:py-12">
+      <div className="container mx-auto max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
             Video Tutorials
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             Learn digital tools step-by-step with our easy-to-follow video guides. Each tutorial is designed specifically for parents and elders.
           </p>
         </div>
 
         {/* Video Player Section */}
         {currentVideo && (
-          <div className="mb-16">
-            <Card className="glass-effect neon-border border-neon-blue/50 max-w-4xl mx-auto overflow-hidden">
+          <div className="mb-12 sm:mb-16">
+            <Card className="glass-effect neon-border border-neon-blue/50 max-w-5xl mx-auto overflow-hidden">
               <CardContent className="p-0">
                 <div className="relative aspect-video bg-black">
                   <iframe
                     width="100%"
                     height="100%"
-                    src={`https://www.youtube.com/embed/${currentVideo}?autoplay=${isPlaying ? 1 : 0}&cc_load_policy=1`}
+                    src={`https://www.youtube.com/embed/${currentVideo}?autoplay=${isPlaying ? 1 : 0}&cc_load_policy=1&rel=0`}
                     title="Tutorial Video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="absolute inset-0"
                   ></iframe>
                 </div>
-                <div className="p-6 bg-card">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-2xl font-semibold text-neon-blue">
+                <div className="p-4 sm:p-6 bg-card">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-neon-blue">
                       {tutorials.find(t => t.videoId === currentVideo)?.title}
                     </h3>
                     <div className="flex items-center space-x-3">
                       <Button
                         onClick={() => setIsPlaying(!isPlaying)}
                         className="bg-neon-blue text-black hover:bg-neon-blue/90"
+                        size="sm"
                       >
-                        {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                        {isPlaying ? <Pause className="w-4 h-4 sm:w-5 sm:h-5" /> : <Play className="w-4 h-4 sm:w-5 sm:h-5" />}
                       </Button>
                       <Button
                         variant="outline"
+                        size="sm"
                         className="border-neon-green text-neon-green"
                         onClick={() => {
                           if ('speechSynthesis' in window) {
@@ -157,11 +159,11 @@ const Tutorials = () => {
                           }
                         }}
                       >
-                        <Volume2 className="w-5 h-5" />
+                        <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />
                       </Button>
                     </div>
                   </div>
-                  <p className="text-muted-foreground mt-2">
+                  <p className="text-muted-foreground mt-2 text-sm sm:text-base">
                     {tutorials.find(t => t.videoId === currentVideo)?.description}
                   </p>
                 </div>
@@ -171,7 +173,7 @@ const Tutorials = () => {
         )}
 
         {/* Tutorial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {tutorials.map((tutorial) => (
             <Card 
               key={tutorial.id}
@@ -180,33 +182,33 @@ const Tutorials = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 group-hover:to-black/40 transition-all duration-300"></div>
               
-              <CardHeader className="relative z-10">
+              <CardHeader className="relative z-10 p-4 sm:p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-full ${tutorial.color} bg-current bg-opacity-20 animate-glow-pulse`}>
-                    <tutorial.icon className="w-8 h-8" />
+                  <div className={`p-2 sm:p-3 rounded-full ${tutorial.color} bg-current bg-opacity-20 animate-glow-pulse`}>
+                    <tutorial.icon className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                     <span className={`px-2 py-1 rounded text-xs font-medium ${getDifficultyColor(tutorial.difficulty)}`}>
                       {tutorial.difficulty}
                     </span>
                     <span className="text-xs text-muted-foreground">{tutorial.duration}</span>
                   </div>
                 </div>
-                <CardTitle className={`text-xl ${tutorial.color} group-hover:animate-glow-pulse`}>
+                <CardTitle className={`text-lg sm:text-xl ${tutorial.color} group-hover:animate-glow-pulse`}>
                   {tutorial.title}
                 </CardTitle>
               </CardHeader>
               
-              <CardContent className="relative z-10">
-                <p className="text-muted-foreground mb-6">{tutorial.description}</p>
+              <CardContent className="relative z-10 p-4 sm:p-6 pt-0">
+                <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{tutorial.description}</p>
                 
                 {/* Topics List */}
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2 mb-4 sm:mb-6">
                   <h4 className="text-sm font-medium text-foreground">What you'll learn:</h4>
                   <ul className="space-y-1">
                     {tutorial.topics.map((topic, index) => (
-                      <li key={index} className="text-sm text-muted-foreground flex items-center">
-                        <div className="w-1.5 h-1.5 bg-neon-blue rounded-full mr-2"></div>
+                      <li key={index} className="text-xs sm:text-sm text-muted-foreground flex items-center">
+                        <div className="w-1.5 h-1.5 bg-neon-blue rounded-full mr-2 flex-shrink-0"></div>
                         {topic}
                       </li>
                     ))}
@@ -214,10 +216,11 @@ const Tutorials = () => {
                 </div>
                 
                 <Button 
-                  className={`w-full ${tutorial.color} border-current hover:bg-current hover:bg-opacity-10 group-hover:animate-glow-pulse`}
+                  className={`w-full ${tutorial.color} border-current hover:bg-current hover:bg-opacity-10 group-hover:animate-glow-pulse text-sm sm:text-base`}
                   variant="outline"
+                  size="sm"
                 >
-                  <Play className="w-4 h-4 mr-2" />
+                  <Play className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   {currentVideo === tutorial.videoId && isPlaying ? 'Now Playing' : 'Watch Tutorial'}
                 </Button>
               </CardContent>
@@ -226,18 +229,18 @@ const Tutorials = () => {
         </div>
 
         {/* Help Section */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 sm:mt-16 text-center px-4">
           <Card className="glass-effect neon-border border-neon-purple/30 max-w-2xl mx-auto">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-semibold text-neon-purple mb-4">Need Personal Help?</h3>
-              <p className="text-muted-foreground mb-6">
+            <CardContent className="p-6 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-semibold text-neon-purple mb-4">Need Personal Help?</h3>
+              <p className="text-muted-foreground mb-6 text-sm sm:text-base">
                 Having trouble with any tutorial? Our AI assistant DigiBuddy is here to help you 24/7!
               </p>
               <Button 
-                className="bg-neon-purple text-black hover:bg-neon-purple/90 neon-glow"
+                className="bg-neon-purple text-black hover:bg-neon-purple/90 neon-glow w-full sm:w-auto"
                 onClick={() => window.location.href = '/chat'}
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Chat with DigiBuddy
               </Button>
             </CardContent>
