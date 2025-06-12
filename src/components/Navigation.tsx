@@ -37,8 +37,12 @@ const Navigation = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-neon rounded-lg flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
+              <img 
+                src="/lovable-uploads/ad601970-82fa-4aa1-bc40-bf7b749e3ed8.png" 
+                alt="Digital Literacy Course"
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-xl font-bold text-neon-blue">Digital Literacy Course</span>
           </div>

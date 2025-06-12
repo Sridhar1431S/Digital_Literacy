@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { BookOpen, MessageCircle, Star, PlayCircle, Users, Heart } from 'lucide-react';
+import { BookOpen, MessageCircle, Star, PlayCircle, Users, Heart, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -81,6 +81,30 @@ const Home = () => {
                 Chat with DigiBuddy
               </Link>
             </Button>
+          </div>
+
+          {/* Digital Literacy Program Link */}
+          <div className="mb-12">
+            <a 
+              href="https://collegetips.in/dlc/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <Card className="glass-effect neon-border border-neon-green/30 overflow-hidden group hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <CardContent className="p-6">
+                  <img 
+                    src="/lovable-uploads/a2ee6a7d-eebd-42dc-ba66-305c1c7faa7c.png" 
+                    alt="Digital Literacy Program"
+                    className="w-full max-w-md mx-auto mb-4 rounded-lg"
+                  />
+                  <div className="flex items-center justify-center text-neon-green">
+                    <span className="text-lg font-semibold mr-2">Visit Our Official Program</span>
+                    <ExternalLink className="w-5 h-5" />
+                  </div>
+                </CardContent>
+              </Card>
+            </a>
           </div>
 
           {/* Hero Images */}
