@@ -8,17 +8,59 @@ const FloatingIcons = () => {
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
 
   const digitalTools = [
-    { name: 'WhatsApp', icon: MessageCircle, color: 'text-neon-green', position: 'top-20 left-10' },
-    { name: 'Paytm', icon: CreditCard, color: 'text-neon-blue', position: 'top-32 right-16' },
-    { name: 'Google Maps', icon: MapPin, color: 'text-neon-purple', position: 'top-48 left-20' },
-    { name: 'Video Call', icon: Video, color: 'text-neon-pink', position: 'top-60 right-24' },
-    { name: 'Camera', icon: Camera, color: 'text-neon-yellow', position: 'top-72 left-32' },
-    { name: 'Photos', icon: Image, color: 'text-neon-orange', position: 'top-80 right-12' },
-    { name: 'Gmail', icon: Mail, color: 'text-neon-green', position: 'top-96 left-16' },
+    { 
+      name: 'WhatsApp', 
+      icon: MessageCircle, 
+      color: 'text-green-400', 
+      position: 'top-20 left-10',
+      image: 'https://images.unsplash.com/photo-1611262588024-d12430b98920?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Paytm', 
+      icon: CreditCard, 
+      color: 'text-blue-400', 
+      position: 'top-32 right-16',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Google Maps', 
+      icon: MapPin, 
+      color: 'text-red-400', 
+      position: 'top-48 left-20',
+      image: 'https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Video Call', 
+      icon: Video, 
+      color: 'text-purple-400', 
+      position: 'top-60 right-24',
+      image: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Camera', 
+      icon: Camera, 
+      color: 'text-yellow-400', 
+      position: 'top-72 left-32',
+      image: 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Photos', 
+      icon: Image, 
+      color: 'text-orange-400', 
+      position: 'top-80 right-12',
+      image: 'https://images.unsplash.com/photo-1493612276216-ee3925520721?w=60&h=60&fit=crop'
+    },
+    { 
+      name: 'Gmail', 
+      icon: Mail, 
+      color: 'text-red-500', 
+      position: 'top-96 left-16',
+      image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=60&h=60&fit=crop'
+    },
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
       <TooltipProvider>
         {digitalTools.map((tool, index) => (
           <Tooltip key={tool.name}>
@@ -33,11 +75,16 @@ const FloatingIcons = () => {
                 <Button
                   variant="outline"
                   size="icon"
-                  className={`${tool.color} border-current hover:bg-current hover:bg-opacity-10 glass-effect neon-border w-12 h-12 rounded-full transition-all duration-300 hover:scale-110`}
+                  className={`${tool.color} border-current hover:bg-current hover:bg-opacity-10 glass-effect neon-border w-16 h-16 rounded-full transition-all duration-300 hover:scale-110 relative overflow-hidden`}
                   onMouseEnter={() => setHoveredIcon(tool.name)}
                   onMouseLeave={() => setHoveredIcon(null)}
                 >
-                  <tool.icon className="w-6 h-6" />
+                  <img 
+                    src={tool.image} 
+                    alt={tool.name}
+                    className="absolute inset-0 w-full h-full object-cover rounded-full opacity-50"
+                  />
+                  <tool.icon className="w-6 h-6 relative z-10" />
                 </Button>
               </div>
             </TooltipTrigger>

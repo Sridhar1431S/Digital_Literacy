@@ -36,6 +36,14 @@
     --ring: 180 100% 50%;
 
     --radius: 0.75rem;
+
+    /* Neon colors */
+    --neon-blue: 180 100% 50%;
+    --neon-purple: 280 100% 70%;
+    --neon-pink: 330 100% 70%;
+    --neon-green: 120 100% 50%;
+    --neon-yellow: 60 100% 50%;
+    --neon-orange: 30 100% 60%;
   }
 }
 
@@ -49,6 +57,22 @@
     background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
     min-height: 100vh;
   }
+}
+
+@layer utilities {
+  .text-neon-blue { color: hsl(var(--neon-blue)); }
+  .text-neon-purple { color: hsl(var(--neon-purple)); }
+  .text-neon-pink { color: hsl(var(--neon-pink)); }
+  .text-neon-green { color: hsl(var(--neon-green)); }
+  .text-neon-yellow { color: hsl(var(--neon-yellow)); }
+  .text-neon-orange { color: hsl(var(--neon-orange)); }
+  
+  .bg-neon-blue { background-color: hsl(var(--neon-blue)); }
+  .bg-neon-purple { background-color: hsl(var(--neon-purple)); }
+  .bg-neon-pink { background-color: hsl(var(--neon-pink)); }
+  .bg-neon-green { background-color: hsl(var(--neon-green)); }
+  .bg-neon-yellow { background-color: hsl(var(--neon-yellow)); }
+  .bg-neon-orange { background-color: hsl(var(--neon-orange)); }
 }
 
 @layer components {
@@ -75,5 +99,23 @@
 
   .animate-glow-pulse {
     animation: glow-pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
   }
 }
